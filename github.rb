@@ -6,7 +6,7 @@ require 'octokit'
   github_username = `git config github.user`.chomp
 
   # if not in git project?
-  git_remote = `git remote -v | grep "\(push\)" | egrep -o "/[^/]+/[^/]+['.git']" | egrep -o ".+[^'.git']"`.chomp
+  git_remote = `git remote -v | grep origin | grep "\(push\)" | egrep -o "/[^/]+/[^/]+['.git']" | egrep -o ".+[^'.git']"`.chomp
   _, remote_username, remote_repo = git_remote.split("/")
   base_branch = "master"
   current_branch = `git branch | grep "\*" | grep -o "[^'* '].*"`.chomp
